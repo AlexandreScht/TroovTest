@@ -43,7 +43,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: 'http://localhost:3005/api/',
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -62,6 +62,38 @@ export default {
           success: colors.green.accent3,
         },
       },
+    },
+  },
+
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push(
+        {
+          name: "Home",
+          path: "/",
+          component: resolve(__dirname, "pages/list"),
+        },
+        {
+          name: "Login",
+          path: "/login",
+          component: resolve(__dirname, "pages/auth/login"),
+        },
+        {
+          name: "Register",
+          path: "/register",
+          component: resolve(__dirname, "pages/auth/register"),
+        },
+        {
+          name: "Edit",
+          path: "/edit",
+          component: resolve(__dirname, "pages/object/edit"),
+        },
+        {
+          name: "Add",
+          path: "/add",
+          component: resolve(__dirname, "pages/object/add"),
+        }
+      )
     },
   },
 
