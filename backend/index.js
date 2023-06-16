@@ -1,13 +1,22 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes');
+const cors = require('cors');
+const session = require('express-session');
 require('dotenv').config();
 
 
 // Configurer Express
 const app = express();
+app.use(
+  cors({
+    origin: ['http://localhost:3000', 'http://localhost:3005'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  })
+);
 app.use(express.json());
-
+app.use(session({ secret: 'secret', resave: false, saveUninitialized: true }));
 // Connexion à la base de données MongoDB avec Mongoose
 mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,

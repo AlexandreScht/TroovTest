@@ -29,7 +29,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
+    // '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
   ],
@@ -38,12 +38,38 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: 'http://localhost:3005/api/',
+  },
+
+    auth: {
+    watchLoggedIn: true,
+    resetOnError: true,
+    localStorage: false,
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: "/login",
+            method: "post",
+            propertyName: "token",
+          },
+          logout: false,
+          user: {
+            url: "/session/user",
+            method: "get",
+            propertyName: "user",
+          },
+        },
+        tokenType: "Bearer",
+        autoLogout: true,
+      },
+    },
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
