@@ -20,7 +20,7 @@
       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
       @click:append="showPassword = !showPassword"
       counter="true"
-      :rules="[required('password'), minLength('password', 8)]"
+      :rules="displayNameField ? [required('password'), minLength('password', 8), passwordFormat()] : [required()]"
     />
 
     <v-btn @click="submit(userInfo)" :disabled="!valid">{{ buttonText }}</v-btn>

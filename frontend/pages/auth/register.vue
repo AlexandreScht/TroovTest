@@ -18,8 +18,8 @@ export default {
     authForm,
   },
   methods: {
-    async registerUser(values) {
-      await this.$store.dispatch('user/register', values)
+    registerUser(values) {
+      this.$store.dispatch('user/register', values)
     },
   },
 }

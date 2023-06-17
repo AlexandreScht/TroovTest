@@ -17,9 +17,16 @@ const emailFormat = () => {
   return (v) => (v && regex.test(v)) || "Must be a valid email"
 }
 
+const passwordFormat = () => {
+  const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&()_+=\-[\]{};':"|,.<>/?]).+$/;
+  return (v) => (v && regex.test(v)) || "Must be a valid password with at least one majuscule, one minuscule and one special character";
+};
+
+
 export default {
   required,
   minLength,
   maxLength,
   emailFormat,
+  passwordFormat
 }

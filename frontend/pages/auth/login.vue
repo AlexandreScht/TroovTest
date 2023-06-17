@@ -1,9 +1,12 @@
 <template>
-  <v-container>
-    <h1>Login</h1>
+  <div>
+    <v-container>
+      <h1>Login</h1>
+      <authForm buttonText="Login" :submit="loginUser" />
+    </v-container>
+    <span class="errorMessage">{{ error }}</span>
+  </div>
 
-    <authForm buttonText="Login" :submit="loginUser" />
-  </v-container>
 </template>
 
 <script>
@@ -13,14 +16,30 @@ export default {
   components: {
     authForm,
   },
+  data() {
+    return {
+      error: '',
+    }
+  },
   methods: {
-    loginUser(values) {
-      this.$auth.loginWith("local", {
+    async loginUser(values) {
+      try {
+        await this.$auth.loginWith("local", {
         data: values,
-      })
+        })
+      this.$router.push('/')
+      } catch (error) {
+        this.error = 'Email or Password incorrect';
+      }
+      
     },
   },
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.errorMessage{
+  color: red;
+  margin-top: 3em;
+}
+</style>
