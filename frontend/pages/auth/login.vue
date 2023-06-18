@@ -2,7 +2,7 @@
   <div>
     <v-container>
       <h1>Login</h1>
-      <authForm buttonText="Login" :submit="loginUser" />
+      <authForm button-text="Login" :submit="loginUser" />
     </v-container>
     <span class="errorMessage">{{ error }}</span>
   </div>
@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      error: '',
+      error: "",
     }
   },
   methods: {
@@ -27,11 +27,10 @@ export default {
         await this.$auth.loginWith("local", {
         data: values,
         })
-      this.$router.push('/')
+      this.$router.push("/")
       } catch (error) {
-        this.error = 'Email or Password incorrect';
+        this.error = "Email or Password incorrect"
       }
-      
     },
   },
 }

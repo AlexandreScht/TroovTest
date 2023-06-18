@@ -3,9 +3,9 @@
     <h1>Register</h1>
 
     <authForm
-      buttonText="Register"
+      button-text="Register"
       :submit="registerUser"
-      displayNameField="true"
+      display-name-field="true"
     />
   </v-container>
 </template>
@@ -19,9 +19,9 @@ export default {
   },
   methods: {
     registerUser(values) {
-      this.$store.dispatch('user/register', values)
+      this.$store.dispatch("user/register", values)
     },
-  },
+  }, 
 }
 </script>
 

@@ -1,12 +1,12 @@
 <template>
   <v-form v-model="valid">
     <v-text-field
+      v-if="displayNameField"
       v-model="userInfo.name"
       label="Name"
       :rules="[required('name')]"
-      v-if="displayNameField"
     />
-
+ 
     <v-text-field
       v-model="userInfo.email"
       label="Email"
@@ -18,18 +18,32 @@
       label="Password"
       :type="showPassword ? 'text' : 'password'"
       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-      @click:append="showPassword = !showPassword"
       counter="true"
       :rules="displayNameField ? [required('password'), minLength('password', 8), passwordFormat()] : [required()]"
+      @click:append="showPassword = !showPassword"
     />
 
-    <v-btn @click="submit(userInfo)" :disabled="!valid">{{ buttonText }}</v-btn>
+    <v-btn :disabled="!valid" @click="submit(userInfo)">{{ buttonText }}</v-btn>
   </v-form>
 </template>
 
 <script>
 import validations from "@/utils/validations"
 export default {
+  props: {
+    submit: {
+      type: Function,
+      required: true
+    },
+    buttonText: {
+      type: String,
+      required: true
+    },
+    displayNameField: {
+      type: Boolean,
+      required: false
+    }
+  },
   data() {
     return {
       valid: false,
@@ -42,7 +56,6 @@ export default {
       ...validations,
     }
   },
-  props: ["submit", "buttonText", "displayNameField"],
 }
 </script>
 
