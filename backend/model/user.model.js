@@ -7,7 +7,11 @@ const User = mongoose.Schema({
   confirmationCode: {
     type: String,
     unique: true,
+    },
   },
-});
+  {
+    timestamps: true,
+  }
+);
 
 module.exports = mongoose.model("User", User);

@@ -64,8 +64,13 @@ export default {
         return arrFormeField
       }, [])
     }, 
-    addObject(values) {
-      console.log(values)
+    async addObject(values) {
+      const Object = this.objectList[0]
+      const objectType = {
+        name: Object.name,
+        picture: Object.image
+      }
+      await this.$store.dispatch("object/create", { payload: { values, objectType } })
     }
   }
 

@@ -1,9 +1,8 @@
 const config = require('../../config/auth.config');
-const User = require('../../model/user.model');
-
-
-var jwt = require('jsonwebtoken');
-var bcrypt = require('bcryptjs');
+const db = require('../../model');
+const User = db.user;
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 exports.register = async (req, res) => {
   const { email, password, name } = req.body;
@@ -50,8 +49,8 @@ exports.login = async (req, res) => {
     }
 
     const user = {
+      id: person._id,
       name: person.name,
-      email: person.email,
     };
 
     // send token with name and email of user
@@ -59,37 +58,33 @@ exports.login = async (req, res) => {
       expiresIn: config.tokenExpiration,
     });
 
-    return res.status(200).send({ token });
+    return res.send({ token });
   } catch (err) {
     return res.status(500).send({ message: 'Error: ' + err });
   }
 };
 
-exports.Authenticate = async (req, res, next) => {
-  if (req.get('Authorization')) {
-    const token = req.get('Authorization').replace('Bearer ', '');
-    if (!token) {
-      return res.status(401).json({ message: 'Error. Need a token' });
-    }
-    req.token = token;
+exports.currentUser = async (req, res) => {
+  const userId = req.userId;
 
-    // Vif token is correct
-    jwt.verify(token, config.secret, (err, decodedToken) => {
-      if (err) {
-        return res.status(401).json({ message: 'Error bad token', err: err });
-      } else {
-        const date = new Date();
-        if (decodedToken.exp > date) {
-          return res.status(401).json({ message: 'Token expired' });
-        } else {
-          // recup token data
-          const user = decodedToken.user;
-          return res.status(200).json({ user });
-        }
-      }
-    });
-  } else {
-    return res.status(401).json({ message: 'Error. Need a token' });
+  try{
+    const getUser = await User.findOne({ _id: userId }).exec();
+
+    if (!getUser) {
+      return res.status(401).send({ message: 'Incorrect user id' });
+    }
+
+    const user = {
+      id: getUser._id,
+      name: getUser.name,
+      email: getUser.email
+    } 
+
+    return res.send({ user });
+  } catch (err) {
+    return res.status(500).send({ message: 'Error: ' + err });
   }
 };
+
+
 

@@ -91,10 +91,13 @@ export default {
   },
   methods: {
     mergeResult() {
-      const values = this.formFields.reduce((fusion, objet) => {
-        return { ...fusion, [objet.label.replace(/\s/g, "_")]: objet.value }
-      },{})
-      values.description = this.text
+      const values = this.formFields.map((objet) => {
+        return { [objet.label.replace(/\s/g, "_")]: objet.value }
+      })
+
+      if (this.text) {
+        values.push({description: this.text})
+      }
 
       return values
     },
