@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const Object = mongoose.Schema({
   properties: Array,
+  objectId: String,
   objectType: {
     name: String,
     picture: String,

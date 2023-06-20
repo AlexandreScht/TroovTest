@@ -1,13 +1,19 @@
 <template>
   <v-app dark>
     <v-app-bar fixed app>
-      <div v-if="$auth.loggedIn">
-        <span>Welcome {{ $auth.user.name }}</span>
-        <v-btn text @click="$auth.logout()">Logout</v-btn>
-      </div>
-      <div v-else>
-        <v-btn text to="/login">Login</v-btn>
-        <v-btn text to="/register">register</v-btn>
+        <nuxt-link id="homeLink" to="/">Home</nuxt-link>
+        <span v-if="$auth.loggedIn" id="userName">Welcome {{ $auth.user.name.charAt(0).toUpperCase() + $auth.user.name.slice(1) }}</span>
+        <div v-if="$auth.loggedIn" class="Menu">
+          <nuxt-link to="/list">My List</nuxt-link>
+        </div>
+      <div class="ml-auto">
+        <div v-if="$auth.loggedIn">
+          <v-btn text @click="$auth.logout()">Logout</v-btn>
+        </div>
+        <div v-else>
+          <v-btn text to="/login">Login</v-btn>
+          <v-btn text to="/register">Register</v-btn>
+        </div>
       </div>
     </v-app-bar>
     <v-main>
@@ -30,8 +36,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-v-app-bar div{
+.Menu{
+  width: 100%; height: 100%;
   display: flex;
-  flex-direction: row;
+  top: 0; left: 0;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+a{
+  text-decoration: none;
+  color: white;
+  padding: 0 1em;
+}
+#homeLink{
+  z-index: 1;
+}
+#userName{
+  color: darkgrey;
 }
 </style>

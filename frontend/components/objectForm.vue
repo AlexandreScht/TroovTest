@@ -53,7 +53,10 @@
         :rows="5"
         outlined
       ></v-textarea>
-      <v-btn :disabled="!valid" color="primary" @click="submit(mergeResult())">{{ buttonText }}</v-btn>
+      <div id="btnContenair">
+        <v-btn :disabled="!valid" color="primary" @click="submit(mergeResult())">{{ buttonText }}</v-btn>
+        <v-btn v-if="deleteObj" color="error" @click="deleteObj">Delete object</v-btn>
+      </div>
     </v-form>
   </div>
 </template>
@@ -81,11 +84,15 @@ export default {
       type: Function,
       required: true
     },
+    deleteObj: {
+      type: Function,
+      required: true
+    },
   },
   data() {
     return {
       valid: false,
-      text: null,
+      text: this.description ?? null,
       showPicker: false
     }
   },
@@ -119,6 +126,10 @@ export default {
   position: relative;
   .datePicker{
     position: absolute;
+  }
+  #btnContenair{
+    display: flex;
+    flex-direction: row;
   }
  }
 </style>

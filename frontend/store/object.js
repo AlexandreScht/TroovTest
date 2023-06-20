@@ -40,9 +40,9 @@ const planning = {
       }
     },
 
-    async update({ commit }, { id }) {
+    async update({ commit }, { payload }) {
       try {
-        const response = await this.$axios.patch(`${this.$axios.defaults.baseURL}object/${id}`)
+        const response = await this.$axios.put(`${this.$axios.defaults.baseURL}object`, payload)
 
         return response
       } catch (error) {

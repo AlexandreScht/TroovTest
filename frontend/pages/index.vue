@@ -67,10 +67,11 @@ export default {
     async addObject(values) {
       const Object = this.objectList[0]
       const objectType = {
-        name: Object.name,
+        name: Object.name, 
         picture: Object.image
       }
-      await this.$store.dispatch("object/create", { payload: { values, objectType } })
+      const objectId = Object.id
+      await this.$store.dispatch("object/create", { payload: { values, objectType, objectId } })
     }
   }
 
@@ -100,5 +101,8 @@ export default {
     background: #cacaca60;
     cursor: pointer;
   }
+ }
+ .row{
+    margin-top: 8vw;
  }
 </style>

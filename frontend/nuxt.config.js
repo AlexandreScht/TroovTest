@@ -97,7 +97,7 @@ export default {
         {
           name: "Home",
           path: "/",
-          component: resolve(__dirname, "pages/list"),
+          component: resolve(__dirname, "pages/index"),
         },
         {
           name: "Login",
@@ -110,14 +110,19 @@ export default {
           component: resolve(__dirname, "pages/auth/register"),
         },
         {
+          name: "Detail",
+          path: "/detail/:id",
+          component: resolve(__dirname, "pages/object/detail"),
+        },
+        {
           name: "Edit",
-          path: "/edit",
+          path: "/edit/:id",
           component: resolve(__dirname, "pages/object/edit"),
         },
         {
-          name: "Add",
-          path: "/add",
-          component: resolve(__dirname, "pages/object/add"),
+          name: "List",
+          path: "/list",
+          component: resolve(__dirname, "pages/object/list"),
         }
       )
     },

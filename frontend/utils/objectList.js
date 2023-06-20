@@ -13,6 +13,7 @@ const objectsList = [
       {
         name: "Carte bleue",
         image: "CategoryA/blue_card.png",
+        id: "cat00",
         form: {
           Type_of_card: {
             items: ["Visa", "Masterd Card", "American Express"],
@@ -27,6 +28,7 @@ const objectsList = [
       {
         name: "Portefeuille, Porte-monnaie",
         image: "CategoryA/wallet.png",
+        id: "cat01",
         form: {
           Mark: {},
           Modal: {},
@@ -42,6 +44,7 @@ const objectsList = [
       {
         name: "Porte-carte",
         image: "CategoryA/wallet_card.png",
+        id: "cat02",
         form: {
           Mark: {},
           Modal: {},
@@ -57,6 +60,7 @@ const objectsList = [
       {
         name: "Argent, billet, monnaie",
         image: "CategoryA/money.png",
+        id: "cat03",
         form: {
           Amount: {
             rule: [Number("Amount")]
@@ -69,6 +73,7 @@ const objectsList = [
       {
         name: "chéquiers",
         image: "CategoryA/chequebooks.png",
+        id: "cat04",
         form: {
           Amount: {
             rule: [Number("Amount")]
@@ -81,6 +86,7 @@ const objectsList = [
       {
         name: "Autres",
         image: "autres.png",
+        id: "cat000",
         form: {
           Object: {
             rule: [required("Object")]
@@ -96,6 +102,7 @@ const objectsList = [
       {
         name: "Carte d'identité",
         image: "CategoryB/id_card.png",
+        id: "cat10",
         form: {
           Nationality: {
             items: nationalityList,
@@ -114,6 +121,7 @@ const objectsList = [
       {
         name: "Passeport",
         image: "CategoryB/passeport.png",
+        id: "cat11",
         form: {
           Nationality: {
             items: nationalityList,
@@ -132,6 +140,7 @@ const objectsList = [
       {
         name: "Permis de conduire",
         image: "CategoryB/driver_license.png",
+        id: "cat12",
         form: {
           Nationality: {
             items: nationalityList,
@@ -150,6 +159,7 @@ const objectsList = [
       {
         name: "Carte nameinative diverse",
         image: "CategoryB/other_card.png",
+        id: "cat13",
         form: {
           Birthday: {
             type: "date",
@@ -165,6 +175,7 @@ const objectsList = [
       {
         name: "Lettre, papier",
         image: "CategoryB/letter.png",
+        id: "cat14",
         form: {
           Picture: {
             type: "file",
@@ -175,6 +186,7 @@ const objectsList = [
       {
         name: "Titre de transport",
         image: "CategoryB/transport_card.png",
+        id: "cat15",
         form: {
           Birthday: {
             type: "date",
@@ -189,6 +201,7 @@ const objectsList = [
       {
         name: "Carte grise",
         image: "CategoryB/car_card.png",
+        id: "cat16",
         form: {
           Registration: {
             rule: [required("Registration")]
@@ -201,6 +214,7 @@ const objectsList = [
       {
         name: "Carte de santé",
         image: "CategoryB/health_card.png",
+        id: "cat17",
         form: {
           Birthday: {
             type: "date",
@@ -212,6 +226,7 @@ const objectsList = [
       {
         name: "Carte de fidélité",
         image: "CategoryB/fidelity_card.png",
+        id: "cat18",
         form: {
           Picture: {
             type: "file",
@@ -223,6 +238,7 @@ const objectsList = [
       {
         name: "Autres",
         image: "autres.png",
+        id: "cat000",
         form: {
           Object: {
             rule: [required("Object")]
@@ -238,6 +254,7 @@ const objectsList = [
       {
         name: "Sac",
         image: "CategoryC/bag.png",
+        id: "cat20",
         form: {
           Mark: {},
           Modal: {},
@@ -253,6 +270,7 @@ const objectsList = [
       {
         name: "Petite valise cabine (< 10kg)",
         image: "CategoryC/cabin_bag.png",
+        id: "cat21",
         form: {
           Mark: {},
           Modal: {},
@@ -268,6 +286,7 @@ const objectsList = [
       {
         name: "Grande valise soute (> 10kg)",
         image: "CategoryC/suitecase.png",
+        id: "cat22",
         form: {
           Mark: {},
           Modal: {},
@@ -283,6 +302,7 @@ const objectsList = [
       {
         name: "Sacoche, étui, trousse",
         image: "CategoryC/case.png",
+        id: "cat23",
         form: {
           Mark: {},
           Modal: {},
@@ -298,6 +318,7 @@ const objectsList = [
       {
         name: "Sac à main",
         image: "CategoryC/hand_bag.png",
+        id: "cat24",
         form: {
           Mark: {},
           Modal: {},
@@ -313,6 +334,7 @@ const objectsList = [
       {
         name: "Sac de courses",
         image: "CategoryC/shopping_bag.png",
+        id: "cat25",
         form: {
           Mark: {},
           Modal: {},
@@ -328,6 +350,7 @@ const objectsList = [
       {
         name: "Sac banane",
         image: "CategoryC/fanny_pack.png",
+        id: "cat26",
         form: {
           Mark: {},
           Modal: {},
@@ -343,6 +366,7 @@ const objectsList = [
       {
         name: "Autres",
         image: "autres.png",
+        id: "cat000",
         form: {
           Object: {
             rule: [required("Object")]
@@ -358,6 +382,7 @@ const objectsList = [
       {
         name: "Appareil photo / vidéo",
         image: "CategoryD/camera.png",
+        id: "cat30",
         form: {
           Mark: {},
           Modal: {},
@@ -373,6 +398,7 @@ const objectsList = [
       {
         name: "Casque audio",
         image: "CategoryD/earphone.png",
+        id: "cat31",
         form: {
           Mark: {},
           Modal: {},
@@ -388,6 +414,7 @@ const objectsList = [
       {
         name: "Ordinateur",
         image: "CategoryD/computer.png",
+        id: "cat32",
         form: {
           Mark: {},
           Modal: {},
@@ -403,6 +430,7 @@ const objectsList = [
       {
         name: "Petit électronique",
         image: "CategoryD/usb_key.png",
+        id: "cat33",
         form: {
           Mark: {},
           Modal: {},
@@ -418,6 +446,7 @@ const objectsList = [
       {
         name: "Tablette",
         image: "CategoryD/tablet.png",
+        id: "cat34",
         form: {
           Mark: {},
           Modal: {},
@@ -433,6 +462,7 @@ const objectsList = [
       {
         name: "Téléphone",
         image: "CategoryD/mobile.png",
+        id: "cat35",
         form: {
           Mark: {},
           Modal: {},
@@ -448,6 +478,7 @@ const objectsList = [
       {
         name: "Écouteurs",
         image: "CategoryD/listeners.png",
+        id: "cat36",
         form: {
           Mark: {},
           Modal: {},
@@ -463,6 +494,7 @@ const objectsList = [
       {
         name: "Lecteur électronique",
         image: "CategoryD/e_reader.png",
+        id: "cat37",
         form: {
           Mark: {},
           Modal: {},
@@ -478,6 +510,7 @@ const objectsList = [
       {
         name: "Montre connectée",
         image: "CategoryD/smartWatch.png",
+        id: "cat38",
         form: {
           Mark: {},
           Modal: {},
@@ -493,6 +526,7 @@ const objectsList = [
       {
         name: "Console Portable",
         image: "CategoryD/game_console.png",
+        id: "cat39",
         form: {
           Mark: {},
           Modal: {},
@@ -508,6 +542,7 @@ const objectsList = [
       {
         name: "Autres",
         image: "autres.png",
+        id: "cat000",
         form: {
           Object: {
             rule: [required("Object")]
