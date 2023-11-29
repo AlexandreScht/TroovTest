@@ -1,7 +1,7 @@
 var http = require('http');
 var server = http.createServer(function(req, res) {
     res.writeHead(200, {'Content-Type': 'text/plain'});
-    var message = 'New changes uploaded on site test 2 ?!\n',
+    var message = 'New changes uploaded on site test 3 ?!\n',
         version = 'NodeJS ' + process.versions.node + ' env: '+ process.env.NODE_ENV +' \n',
         host = server.address().address,
         port = server.address().port,
